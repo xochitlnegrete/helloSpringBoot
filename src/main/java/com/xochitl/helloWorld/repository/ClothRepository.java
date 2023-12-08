@@ -18,18 +18,18 @@ public class ClothRepository {
     @Autowired
     private DynamoDBMapper dynamoDBMapper;
 
-    public Cloth save(Cloth cloth) {
-        log.info("Método SaveCloth");
+    public Cloth addCloth(Cloth cloth) {
+        log.info("Method SaveCloth");
         dynamoDBMapper.save(cloth);
         return cloth;
     }
 
     public Optional<Cloth> getClothById(String cloth_id) {
-        log.info("Método getCloth");
+        log.info("Method getCloth");
         Cloth cloth = null;
         Map<String, AttributeValue> eav= new HashMap<>();
         eav.put(":cloth_id", new AttributeValue().withS(cloth_id));
-        DynamoDBScanExpression scanExpression=new DynamoDBScanExpression()
+        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
                 .withFilterExpression("cloth_id=:cloth_id")
                 .withExpressionAttributeValues(eav);
         List<Cloth> useResult=dynamoDBMapper.scan(Cloth.class, scanExpression);

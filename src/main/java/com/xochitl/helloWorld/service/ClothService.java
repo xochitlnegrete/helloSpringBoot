@@ -18,18 +18,18 @@ public class ClothService {
     private ClothRepository clothRepository;
 
     public Optional<Cloth> getClothByID(String cloth_id) {
-        log.info("Metodo Service getClothById");
+        log.info("Method Service getClothById");
         return clothRepository.getClothById(cloth_id);
     }
 
     public Optional<List<Cloth>> getAllCloths() {
-        log.info("Metodo Service getAllCloths");
+        log.info("Method Service getAllCloths");
         return clothRepository.getAllCloths();
     }
 
-    public Optional<Cloth> createCloth(Cloth cloth) {
-        log.info("Metodo service createUser");
-        clothRepository.save(cloth);
+    public Optional<Cloth> addCloth(Cloth cloth) {
+        log.info("Metodo service createCloth");
+        clothRepository.addCloth(cloth);
         return Optional.of(cloth);
     }
 }

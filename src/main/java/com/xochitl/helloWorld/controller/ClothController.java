@@ -21,9 +21,9 @@ public class ClothController {
     private ClothService clothService;
 
     @PostMapping
-    public ResponseEntity<Cloth> saveCloth(@RequestBody Cloth cloth) {
-        log.info("Entering create() with {}", cloth);
-        return clothService.createCloth(cloth).map(newCloth -> new ResponseEntity<>(newCloth, OK))
+    public ResponseEntity<Cloth> addCloth(@RequestBody Cloth cloth) {
+        log.info("Entering add() with {}", cloth);
+        return clothService.addCloth(cloth).map(newCloth -> new ResponseEntity<>(newCloth, OK))
                 .orElse(new ResponseEntity<>(CONFLICT));
     }
 
