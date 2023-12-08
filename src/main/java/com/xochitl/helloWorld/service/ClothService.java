@@ -32,4 +32,14 @@ public class ClothService {
         clothRepository.addCloth(cloth);
         return Optional.of(cloth);
     }
+
+    public boolean deleteCloth(String cloth_id) {
+        log.trace("Method Service deleteCloth");
+        //User userDelete=userRepository.getUSer(dni);
+        if (clothRepository.getClothById(cloth_id).isEmpty()) {
+            return false;
+        }
+        clothRepository.deleteCloth(cloth_id);
+        return true;
+    }
 }
